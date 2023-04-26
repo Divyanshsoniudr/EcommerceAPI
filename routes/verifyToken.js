@@ -8,13 +8,10 @@ const verifyToken = (req, res, next) => {
     const token = authHeader.split(' ')[1];
      // Verifies the token using the JWT_SECRET and calls the callback function with the decoded token
     jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-      if (err) {
-        res.status(401).json('Token is not valid!');
-      } else {
-          // Adds the decoded user object to the request object
+      if (err) res.status(401).json('Token is not valid!');
         req.user = user;
         next();
-      }
+      
     });
   } else {
     return res.status(401).json("You're not authenticated!");
