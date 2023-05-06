@@ -48,7 +48,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // Get all users information endpoint
-router.get("/find/ :id", verifyTokenAndAdmin, async (req, res) => {
+router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
     const query = req.query.new
     try {
     // Find the user with the given ID in the database
